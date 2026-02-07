@@ -993,7 +993,7 @@ mask-image: linear-gradient(to top, transparent 40%, #079097 80%) !important;
   font-size: 2vw;
   white-space: nowrap;
   opacity: 0;
-  animation: floatMessage 6s ease-in-out infinite;
+  animation: floatMessage 6s ease-in-out forwards;
   pointer-events: none;
 }
 
