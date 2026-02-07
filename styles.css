@@ -984,3 +984,74 @@ mask-image: linear-gradient(to top, transparent 40%, #079097 80%) !important;
 .not-loaded * {
   animation-play-state: paused !important;
 }
+.rose-message {
+  position: absolute;
+  bottom: 40%; /* start higher */
+  left: 50%;   /* center horizontally */
+  transform: translate(-50%, 0); /* center properly */
+  color: #ff4b9b;
+  font-size: 2vw;
+  white-space: nowrap;
+  opacity: 0;
+  animation: floatMessage 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Random delays for multiple messages, keep them centered */
+.rose-message:nth-child(2) { animation-delay: 1s; font-size: 2.2vw; }
+.rose-message:nth-child(3) { animation-delay: 2s; font-size: 1.8vw; }
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .rose-message { font-size: 3vw; }
+  .rose-message:nth-child(2) { font-size: 3.2vw; }
+  .rose-message:nth-child(3) { font-size: 2.8vw; }
+}
+
+/* Float upwards animation */
+@keyframes floatMessage {
+  0% { transform: translate(-50%, 0); opacity: 0; }
+  10% { opacity: 1; }
+  50% { transform: translate(-50%, -30vh); opacity: 1; }
+  90% { opacity: 0; }
+  100% { transform: translate(-50%, -35vh); opacity: 0; }
+}
+
+
+
+#rose-petals-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.rose-petal {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path fill="%23ff1a5b" d="M32 2C22 2 14 14 32 62 50 14 42 2 32 2z"/></svg>') no-repeat center/contain;
+  opacity: 0.9;
+  animation-name: rose-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+
+@keyframes rose-fall {
+  0% {
+    transform: translateY(-30px) rotate(0deg) scale(0.6);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(50vh) translateX(20px) rotate(180deg) scale(1);
+  }
+  100% {
+    transform: translateY(100vh) translateX(-20px) rotate(360deg) scale(0.5);
+    opacity: 0;
+  }
+}
+
